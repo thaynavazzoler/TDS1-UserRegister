@@ -1,34 +1,36 @@
 class User {
-    constructor(name, email, age, birthdate, address, cpf, cellphone){
+    constructor(name, email, age, birthdate, address, cpf, phone){
         this.name = name;
         this.email = email;
         this.age = age;
         this.birthdate = birthdate;
         this.address = address;
         this.cpf = cpf;
-        this.cellphone = cellphone;
+        this.lphone = phone;
         this.realAlge = this.CalculedAge();
         this.getZodiacSign = this.getZodiacSign ();
-        this.vertifyPotencialClient = this.vertifyPotencialClient(this.age);
+        this.PotencialClient = this.PotencialClient(this.age);
     }
 }
 
 class ListUsers{
     constructor(){
-        this.users = []
+        this.users = [];
     }
 }
 
+
+
 CalculedAge (age){
     const today = new Date();
-    const birth = new Date(age);
-    const realAlge = today - birth;
-    return Math.floor(realAlge / (1000 * 68 * 24 * 365.25));
+    const birthdate = new Date(age);
+    const realAlge = today - birthdate;
+    return Math.floor(realAge / (1000 * 68 * 24 * 365.25));
 }
 
 
 
-function getZodiacSign() {
+ function getZodiacSign() {
     let birthdate = new Date(this.birthdate);
     let day = birthdate.getDate();
     let month = birthdate.getMonth() + 1;
@@ -61,7 +63,7 @@ function getZodiacSign() {
     }
 }
 
-vertifyPotencialClient(realAlge){
+PotencialClient(realAlge){
     return realAlge >= 18 && <= 31;
 }
 
@@ -138,6 +140,15 @@ function sendErrorMsg(msg) {
         document.getElementById("error-msg").classList.add("hidden");
     }, 4000);
 }
+
+const formRegister = document.getElementById("user-form");
+const sendButton = document.getElementById("button-register");
+const sucessMessage = document.getElementById("error-msg");
+const userList = document.getElementById("user-list");
+const backtoForm = document.getElementById("button-register");
+const usersList = [];
+
+
 
 const ListUsers = new ListUsers();
 
