@@ -1,12 +1,12 @@
 class User {
-    constructor(name, email, age, birthdate, address, cpf, phone){
+    constructor(name, email, age, birthdate, address, cpf, cellphonephone){
         this.name = name;
         this.email = email;
         this.age = age;
         this.birthdate = birthdate;
         this.address = address;
         this.cpf = cpf;
-        this.lphone = phone;
+        this.cellphone= cellphone;
         this.realAlge = this.CalculedAge();
         this.getZodiacSign = this.getZodiacSign ();
         this.PotencialClient = this.PotencialClient(this.age);
@@ -18,7 +18,6 @@ class ListUsers{
         this.users = [];
     }
 }
-
 
 
 CalculedAge (age){
