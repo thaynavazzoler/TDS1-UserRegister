@@ -27,8 +27,6 @@ CalculedAge (age){
     return Math.floor(realAge / (1000 * 68 * 24 * 365.25));
 }
 
-
-
  function getZodiacSign() {
     let birthdate = new Date(this.birthdate);
     let day = birthdate.getDate();
@@ -62,9 +60,31 @@ CalculedAge (age){
     }
 }
 
-PotencialClient(realAlge){
-    return realAlge >= 18 && <= 31;
+getPersonAge(){
+    console.log("passou pela conta de idade")
+    const birthdate = this.birthdayDate;
+    const birthYear = new Date (birthdate).getFullYear();
+    const weYear = new Date().getFullYear();
+     const birthMonth = new Date(birthdate).getMonth() + 1;
+     const weMonth = new Date().getMonth() + 1;
+
+     const age = weYear - birthYear;
+     if(birthMonth > weMonth){
+        return age - 1;
+     } else {
+        return age;
+     }
 }
+possibleClient(){
+    let client = 0;
+    if (this.age < 18 || this.age > 26){
+        return "não é um possível cliente";
+    }if(this.age >=18 && this.age <=26){
+        client ++;
+        return "É um possível cliente";
+    }
+}
+
 
 function showRegister() {
     document.getElementById("sub-div").classList.add("hidden");
@@ -152,24 +172,24 @@ const usersList = [];
 const ListUsers = new ListUsers();
 
 function showUsers(){
-    const nome = document.getElementById("name").value;
-    const email = document.getElementById("email").value;
-    const data =  document.getElementById("birthdate").value;
-    const cidade = document.getElementById("address").value;
-    const telefone = document.getElementById("phone").value;
-    const cpf = document.getElementById("cpf").value;
-
-    const user = new User(nome, email, data, cidade, telefone, cpf);
-
-  ListUsers.add(user);
-
-
+let user2 = '';
+arrayList.users.forEach((user) =>{
+    console.log(user);
+    user2 +=`   
+    <div class = "list- eachUser">
+    <p>Nome: ${user.name}</p>
+    <p>idade: ${user.age}</p>
+    <p>Nascimento: ${user.birthdate}</p>
+    <p>Signo: ${user.getZodiacSign}</p>
+    <p>Cidade: ${user.address}</p>
+    <p>Phone: ${user.cellphone}</p>
+    <p> CPF: ${user.cpf}</p>
+    <p>CPF: ${user.client}</p>
+ </div>`;
+ 
+})
+document.getElementById("user-list").innerHTML = user2;
 }
-
-
-
-
-
 // how many functions are there? 12
 // how many classes are there? 2
 
